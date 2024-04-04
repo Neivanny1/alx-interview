@@ -14,7 +14,6 @@ to handle the 8 least significant bits of each integer
 
 def validUTF8(data):
     bytes_to_follow = 0
-    
     for byte in data:
         if bytes_to_follow > 0:
             if byte >> 6 != 0b10:
