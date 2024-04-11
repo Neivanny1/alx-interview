@@ -8,30 +8,21 @@ import sys
 def is_safe(board, row, col, N):
     '''Check if there's a queen in the same column'''
     for i in range(row):
-        if board[i][col] == 'Q':
-            return False
-    '''Check upper left diagonal'''
-    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
-        if board[i][j] == 'Q':
-            return False
-    '''Check upper right diagonal'''
-    for i, j in zip(range(row, -1, -1), range(col, N)):
-        if board[i][j] == 'Q':
+        if board[i] == col or \
+            board[i] - i == col - row or \
+            board[i] + i == col + row:
             return False
     return True
 
 
 def solve(board, row, N):
     if row == N:
-        for row in board:
-            print(''.join(row))
-        print()
+        print([[i, board[i]] for i in range(N)])
         return
     for col in range(N):
         if is_safe(board, row, col, N):
-            board[row][col] = 'Q'
+            board[row] = col
             solve(board, row + 1, N)
-            board[row][col] = '.'
 
 
 def nqueens(N):
@@ -42,8 +33,7 @@ def nqueens(N):
     if N < 4:
         print("N must be at least 4")
         sys.exit(1)
-    board = [['.' for _ in range(N)] for _ in range(N)]
-    solve(board, 0, N)
+    solve([-1] * N, 0, N)
 
 
 if __name__ == "__main__":
