@@ -8,9 +8,7 @@ import sys
 def is_safe(board, row, col, N):
     '''Check if there's a queen in the same column'''
     for i in range(row):
-        if board[i] == col or \
-            board[i] - i == col - row or \
-            board[i] + i == col + row:
+        if board[i] == col or abs(board[i] - col) == abs(i - row):
             return False
     return True
 
