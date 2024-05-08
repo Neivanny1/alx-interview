@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+'''
+0-island_perimeter.py
+'''
+
+
 def island_perimeter(grid):
     perimeter = 0
     grid_length = len(grid)
