@@ -5,6 +5,10 @@
 
 
 def island_perimeter(grid):
+    '''
+     a function def island_perimeter(grid): that returns
+     the perimeter of the island described in grid
+     '''
     total_perimeter = 0
     for i, row in enumerate(grid):
         for j, element in enumerate(row):
